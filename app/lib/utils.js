@@ -1,3 +1,5 @@
+// utils.js
+
 export const formatCurrency = (amount) => {
   return (amount / 100).toLocaleString('en-US', {
     style: 'currency',
@@ -24,13 +26,18 @@ export const generateYAxis = (revenue) => {
   const topLabel = Math.ceil(highestRecord / 1000) * 1000;
 
   for (let i = topLabel; i >= 0; i -= 1000) {
-    yAxisLabels.push(`$${i / 1000}K`);
+    yAxisLabels.push(`${i / 1000}K`);
   }
 
   return { yAxisLabels, topLabel };
 };
 
 export const generatePagination = (currentPage, totalPages) => {
+  // Ensure currentPage does not exceed totalPages
+  if (currentPage > totalPages) {
+    currentPage = totalPages;
+  }
+
   // If the total number of pages is 7 or less,
   // display all pages without any ellipsis.
   if (totalPages <= 7) {
