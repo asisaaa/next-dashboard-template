@@ -3,7 +3,7 @@ import { Card } from "../ui/dashboard/cards";
 import RevenueChart from "../ui/dashboard/revenue-chart";
 import LatestInvoices from "../ui/dashboard/latest-invoices";
 import { lusitana } from "../ui/fonts";
-import { fetchRevenue } from "../lib/data";
+import { fetchRevenue } from "@/app/lib/data";
 
 export default async function Page() {
   const revenue = await fetchRevenue();
@@ -19,7 +19,7 @@ export default async function Page() {
         {/* <Card title="Total Customers" value={numberOfCustomers} type="customers" /> */}
       </div>
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-        {/* <RevenueChart revenue={revenue}  /> */}
+        <RevenueChart revenue={revenue}  />
         {/* <LatestInvoices latestInvoices={latestInvoices} /> */}
       </div>
     </main>
